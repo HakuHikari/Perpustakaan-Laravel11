@@ -1,4 +1,16 @@
 <x-guest-layout>
+    <style>
+        .custom-number-input::-webkit-inner-spin-button,
+    .custom-number-input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .custom-number-input {
+        -moz-appearance: textfield;
+
+    }
+    </style>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -8,6 +20,13 @@
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
+
+        <div class="mt-4">
+            <x-input-label for="nim" :value="__('Nim')" />
+            <x-text-input id="nim" class="block mt-1 w-full custom-number-input" type="number" name="nim" :value="old('nim')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('nim')" class="mt-2" />
+        </div>
+
 
         <!-- Email Address -->
         <div class="mt-4">
